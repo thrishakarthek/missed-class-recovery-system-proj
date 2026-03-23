@@ -104,7 +104,7 @@ export class CrAssignSchedule implements OnInit {
     });
 
     this.http.post(
-      '${environment.apiUrl}/api/schedules/create-or-update',
+      `${environment.apiUrl}/api/schedules/create-or-update`,
       {
         classId: this.selectedClassId,
         date: this.date,

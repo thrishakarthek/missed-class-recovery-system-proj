@@ -32,7 +32,7 @@ export class CrCreateClass {
     }
 
     this.http.post(
-      '${environment.apiUrl}/api/classes/create',
+      `${environment.apiUrl}/api/classes/create`,
       {
         department: this.department,
         year: this.year,

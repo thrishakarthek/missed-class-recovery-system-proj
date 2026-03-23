@@ -44,7 +44,7 @@ export class FacultyCreateSession implements OnInit {
   }
 
   fetchClasses(): void {
-    this.http.get<any>('${environment.apiUrl}/api/classes', {
+    this.http.get<any>(`${environment.apiUrl}/api/classes`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }

@@ -57,7 +57,7 @@ export class CrDashboard implements OnInit {
   }
 
   fetchClasses(): void {
-    this.http.get<any>('${environment.apiUrl}/api/classes', {
+    this.http.get<any>(`${environment.apiUrl}/api/classes`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -206,7 +206,7 @@ export class CrDashboard implements OnInit {
   }
 
   fetchFacultyUsers(): void {
-    this.http.get<any>('${environment.apiUrl}/api/auth/faculty-users', {
+    this.http.get<any>(`${environment.apiUrl}/api/auth/faculty-users`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }

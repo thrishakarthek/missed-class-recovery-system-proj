@@ -37,7 +37,7 @@ export class CrCreateSubject implements OnInit {
   }
 
   fetchClasses(): void {
-    this.http.get<any>('${environment.apiUrl}/api/classes', {
+    this.http.get<any>(`${environment.apiUrl}/api/classes`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -52,7 +52,7 @@ export class CrCreateSubject implements OnInit {
   }
 
   fetchFacultyUsers(): void {
-    this.http.get<any>('${environment.apiUrl}/api/auth/faculty-users', {
+    this.http.get<any>(`${environment.apiUrl}/api/auth/faculty-users`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -73,7 +73,7 @@ export class CrCreateSubject implements OnInit {
     }
 
     this.http.post(
-      '${environment.apiUrl}/api/subjects/create',
+      `${environment.apiUrl}/api/subjects/create`,
       {
         name: this.subjectName,
         subjectCode: this.subjectCode,
