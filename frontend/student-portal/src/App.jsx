@@ -41,7 +41,7 @@ function App() {
 
   const fetchClasses = async (authToken, loggedInUser) => {
     try {
-      const res = await fetch("{import.meta.env.VITE_API_URL/api/classes", {
+      const res = await fetch("{import.meta.env.VITE_API_URL}/api/classes", {
         headers: {
           Authorization: `Bearer ${authToken}`
         }
@@ -80,7 +80,7 @@ function App() {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("{import.meta.env.VITE_API_URL/api/auth/login", {
+      const res = await fetch("{import.meta.env.VITE_API_URL}/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -112,7 +112,7 @@ function App() {
 
   const handleSignup = async () => {
     try {
-      const res = await fetch("{import.meta.env.VITE_API_URL/api/auth/signup", {
+      const res = await fetch("{import.meta.env.VITE_API_URL}/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -170,7 +170,7 @@ function App() {
       }
 
       const res = await fetch(
-        `{import.meta.env.VITE_API_URL/api/schedules/${classId}/${today}`,
+        `{import.meta.env.VITE_API_URL}/api/schedules/${classId}/${today}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -222,7 +222,7 @@ function App() {
       }
 
       const res1 = await fetch(
-        `{import.meta.env.VITE_API_URL/api/missed/sessions?classId=${classId}&startDate=${fromDate}&endDate=${toDate}`,
+        `{import.meta.env.VITE_API_URL}/api/missed/sessions?classId=${classId}&startDate=${fromDate}&endDate=${toDate}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -240,7 +240,7 @@ function App() {
       setSessions(data1.sessions || []);
 
       const res2 = await fetch(
-        `{import.meta.env.VITE_API_URL/api/missed/summary?classId=${classId}&startDate=${fromDate}&endDate=${toDate}`,
+        `{import.meta.env.VITE_API_URL}/api/missed/summary?classId=${classId}&startDate=${fromDate}&endDate=${toDate}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -271,7 +271,7 @@ function App() {
       }
 
       const res = await fetch(
-        `{import.meta.env.VITE_API_URL/api/subjects/class/${classId}`,
+        `{import.meta.env.VITE_API_URL}/api/subjects/class/${classId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -317,7 +317,7 @@ function App() {
       formData.append("title", title);
       formData.append("file", file);
 
-      const res = await fetch("{import.meta.env.VITE_API_URL/api/sessions/upload-peer-note", {
+      const res = await fetch("{import.meta.env.VITE_API_URL}/api/sessions/upload-peer-note", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`
