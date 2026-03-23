@@ -98,7 +98,7 @@ export class CrDashboard implements OnInit {
     }
 
     this.http.post(
-      '${environment.apiUrl}/api/classes/create',
+      `${environment.apiUrl}/api/classes/create`,
       {
         department: this.department,
         year: this.year,
@@ -130,7 +130,7 @@ export class CrDashboard implements OnInit {
     }
 
     this.http.post(
-      '${environment.apiUrl}/api/subjects/create',
+      `${environment.apiUrl}/api/subjects/create`,
       {
         name: this.subjectName,
         subjectCode: this.subjectCode,
@@ -184,7 +184,7 @@ export class CrDashboard implements OnInit {
     });
 
     this.http.post(
-      '${environment.apiUrl}/api/schedules/create-or-update',
+      `${environment.apiUrl}/api/schedules/create-or-update`,
       {
         classId: this.selectedClassId,
         date: this.date,

@@ -101,7 +101,7 @@ export class FacultyDashboard implements OnInit {
     };
 
     this.http.post(
-      '${environment.apiUrl}/api/sessions/create',
+      `${environment.apiUrl}/api/sessions/create`,
       payload,
       {
         headers: {
@@ -137,7 +137,7 @@ export class FacultyDashboard implements OnInit {
     formData.append('file', this.selectedSessionFile);
 
     this.http.post(
-      '${environment.apiUrl}/api/sessions/upload-faculty-note',
+      `${environment.apiUrl}/api/sessions/upload-faculty-note`,
       formData,
       {
         headers: {
@@ -173,7 +173,7 @@ export class FacultyDashboard implements OnInit {
     formData.append('file', this.selectedGeneralFile);
 
     this.http.post(
-      '${environment.apiUrl}/api/subjects/upload-general-note',
+      `${environment.apiUrl}/api/subjects/upload-general-note`,
       formData,
       {
         headers: {

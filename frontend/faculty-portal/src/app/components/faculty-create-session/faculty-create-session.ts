@@ -103,7 +103,7 @@ export class FacultyCreateSession implements OnInit {
   }
 
   this.http.post(
-    '${environment.apiUrl}/api/sessions/create',
+    `${environment.apiUrl}/api/sessions/create`,
     formData,
     {
       headers: {

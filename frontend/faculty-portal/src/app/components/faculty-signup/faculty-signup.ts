@@ -25,7 +25,7 @@ export class FacultySignup {
       return;
     }
 
-    this.http.post('${environment.apiUrl}/api/auth/signup', {
+    this.http.post(`${environment.apiUrl}/api/auth/signup`, {
       name: this.name,
       email: this.email,
       password: this.password,

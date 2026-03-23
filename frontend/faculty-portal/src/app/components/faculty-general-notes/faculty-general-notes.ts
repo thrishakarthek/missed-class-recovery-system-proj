@@ -91,7 +91,7 @@ export class FacultyGeneralNotes implements OnInit {
     formData.append('file', this.selectedGeneralFile);
 
     this.http.post(
-      '${environment.apiUrl}/api/subjects/upload-general-note',
+      `${environment.apiUrl}/api/subjects/upload-general-note`,
       formData,
       {
         headers: {
