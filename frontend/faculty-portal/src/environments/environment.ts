@@ -1,3 +1,3 @@
 export const environment={
-    apiUrl:'htts://Missed-Class-Recovery-System.onrender.com'
+    apiUrl:'https://missed-class-recovery-system.onrender.com'
 };
