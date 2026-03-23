@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment'
 @Component({
   selector: 'app-cr-assign-schedule',
   standalone: true,
@@ -40,7 +40,7 @@ export class CrAssignSchedule implements OnInit {
   }
 
   fetchClasses(): void {
-    this.http.get<any>('http://localhost:5000/api/classes', {
+    this.http.get<any>('${environment.apiUrl}/api/classes', {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -61,7 +61,7 @@ export class CrAssignSchedule implements OnInit {
     }
 
     this.http.get<any>(
-      `http://localhost:5000/api/subjects/class/${this.selectedClassId}`,
+      `${environment.apiUrl}/api/subjects/class/${this.selectedClassId}`,
       {
         headers: {
           Authorization: `Bearer ${this.token}`
@@ -104,7 +104,7 @@ export class CrAssignSchedule implements OnInit {
     });
 
     this.http.post(
-      'http://localhost:5000/api/schedules/create-or-update',
+      '${environment.apiUrl}/api/schedules/create-or-update',
       {
         classId: this.selectedClassId,
         date: this.date,

@@ -125,7 +125,7 @@ exports.uploadGeneralNote = async (req, res) => {
     }
 
     // file URL
-    const fileUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const fileUrl = `${process.envBASE_URL}/uploads/${req.file.filename}`;
 
     // push into generalNotes
     subject.generalNotes.push({

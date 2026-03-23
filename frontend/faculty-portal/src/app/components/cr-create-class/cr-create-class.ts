@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-cr-create-class',
   standalone: true,
@@ -32,7 +32,7 @@ export class CrCreateClass {
     }
 
     this.http.post(
-      'http://localhost:5000/api/classes/create',
+      '${environment.apiUrl}/api/classes/create',
       {
         department: this.department,
         year: this.year,

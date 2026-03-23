@@ -4,7 +4,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { AuthService } from '../../services/auth';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment'
 @Component({
   selector: 'app-cr-create-subject',
   standalone: true,
@@ -37,7 +37,7 @@ export class CrCreateSubject implements OnInit {
   }
 
   fetchClasses(): void {
-    this.http.get<any>('http://localhost:5000/api/classes', {
+    this.http.get<any>('${environment.apiUrl}/api/classes', {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -52,7 +52,7 @@ export class CrCreateSubject implements OnInit {
   }
 
   fetchFacultyUsers(): void {
-    this.http.get<any>('http://localhost:5000/api/auth/faculty-users', {
+    this.http.get<any>('${environment.apiUrl}/api/auth/faculty-users', {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -73,7 +73,7 @@ export class CrCreateSubject implements OnInit {
     }
 
     this.http.post(
-      'http://localhost:5000/api/subjects/create',
+      '${environment.apiUrl}/api/subjects/create',
       {
         name: this.subjectName,
         subjectCode: this.subjectCode,

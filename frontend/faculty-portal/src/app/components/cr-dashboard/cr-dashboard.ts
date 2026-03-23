@@ -4,7 +4,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth';
-
+import { environment } from '../../../environments/environment'
 @Component({
   selector: 'app-cr-dashboard',
   standalone: true,
@@ -57,7 +57,7 @@ export class CrDashboard implements OnInit {
   }
 
   fetchClasses(): void {
-    this.http.get<any>('http://localhost:5000/api/classes', {
+    this.http.get<any>('${environment.apiUrl}/api/classes', {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -75,7 +75,7 @@ export class CrDashboard implements OnInit {
     if (!this.selectedClassId) return;
 
     this.http.get<any>(
-      `http://localhost:5000/api/subjects/class/${this.selectedClassId}`,
+      `${environment.apiUrl}/api/subjects/class/${this.selectedClassId}`,
       {
         headers: {
           Authorization: `Bearer ${this.token}`
@@ -98,7 +98,7 @@ export class CrDashboard implements OnInit {
     }
 
     this.http.post(
-      'http://localhost:5000/api/classes/create',
+      '${environment.apiUrl}/api/classes/create',
       {
         department: this.department,
         year: this.year,
@@ -130,7 +130,7 @@ export class CrDashboard implements OnInit {
     }
 
     this.http.post(
-      'http://localhost:5000/api/subjects/create',
+      '${environment.apiUrl}/api/subjects/create',
       {
         name: this.subjectName,
         subjectCode: this.subjectCode,
@@ -184,7 +184,7 @@ export class CrDashboard implements OnInit {
     });
 
     this.http.post(
-      'http://localhost:5000/api/schedules/create-or-update',
+      '${environment.apiUrl}/api/schedules/create-or-update',
       {
         classId: this.selectedClassId,
         date: this.date,
@@ -206,7 +206,7 @@ export class CrDashboard implements OnInit {
   }
 
   fetchFacultyUsers(): void {
-    this.http.get<any>('http://localhost:5000/api/auth/faculty-users', {
+    this.http.get<any>('${environment.apiUrl}/api/auth/faculty-users', {
       headers: {
         Authorization: `Bearer ${this.token}`
       }

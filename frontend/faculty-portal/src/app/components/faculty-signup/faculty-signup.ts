@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment'
 @Component({
   selector: 'app-faculty-signup',
   standalone: true,
@@ -25,7 +25,7 @@ export class FacultySignup {
       return;
     }
 
-    this.http.post('http://localhost:5000/api/auth/signup', {
+    this.http.post('${environment.apiUrl}/api/auth/signup', {
       name: this.name,
       email: this.email,
       password: this.password,

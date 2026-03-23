@@ -4,7 +4,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth';
-
+import { environment } from '../../../environments/environment'
 @Component({
   selector: 'app-faculty-dashboard',
   standalone: true,
@@ -48,7 +48,7 @@ export class FacultyDashboard implements OnInit {
   }
 
   fetchClasses(): void {
-    this.http.get<any>('http://localhost:5000/api/classes', {
+    this.http.get<any>('${environment.apiUrl}/api/classes', {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -69,7 +69,7 @@ export class FacultyDashboard implements OnInit {
     }
 
     this.http.get<any>(
-      `http://localhost:5000/api/subjects/class/${this.selectedClassId}`,
+      `${environment.apiUrl}/api/subjects/class/${this.selectedClassId}`,
       {
         headers: {
           Authorization: `Bearer ${this.token}`
@@ -101,7 +101,7 @@ export class FacultyDashboard implements OnInit {
     };
 
     this.http.post(
-      'http://localhost:5000/api/sessions/create',
+      '${environment.apiUrl}/api/sessions/create',
       payload,
       {
         headers: {
@@ -137,7 +137,7 @@ export class FacultyDashboard implements OnInit {
     formData.append('file', this.selectedSessionFile);
 
     this.http.post(
-      'http://localhost:5000/api/sessions/upload-faculty-note',
+      '${environment.apiUrl}/api/sessions/upload-faculty-note',
       formData,
       {
         headers: {
@@ -173,7 +173,7 @@ export class FacultyDashboard implements OnInit {
     formData.append('file', this.selectedGeneralFile);
 
     this.http.post(
-      'http://localhost:5000/api/subjects/upload-general-note',
+      '${environment.apiUrl}/api/subjects/upload-general-note',
       formData,
       {
         headers: {
