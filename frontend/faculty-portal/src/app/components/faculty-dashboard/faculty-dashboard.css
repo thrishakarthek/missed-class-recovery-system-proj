@@ -1,0 +1,85 @@
+.dashboard-page {
+  min-height: 100vh;
+  background: #0f172a;
+  padding: 30px;
+  color: #e2e8f0;
+}
+
+.dashboard-container {
+  max-width: 850px;
+  margin: 0 auto;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.info-card {
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+h2, h3 {
+  color: #f8fafc;
+  margin-bottom: 14px;
+}
+
+p {
+  margin: 8px 0;
+  color: #cbd5e1;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  color: #cbd5e1;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  color: #f8fafc;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+button {
+  padding: 12px 18px;
+  margin-top: 12px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0ea5e9;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #334155;
+  margin: 24px 0;
+}

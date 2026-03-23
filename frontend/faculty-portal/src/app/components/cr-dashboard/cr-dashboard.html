@@ -1,0 +1,92 @@
+<div class="dashboard-page">
+  <div class="dashboard-container" *ngIf="user">
+    <h2>CR Dashboard</h2>
+
+    <div class="info-card">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Class:</strong> {{ user.className }}</p>
+    </div>
+
+    <hr />
+
+    <h3>Create Class</h3>
+
+    <label>Department</label>
+    <input type="text" [(ngModel)]="department" placeholder="e.g. CSE" />
+
+    <label>Year</label>
+    <input type="number" [(ngModel)]="year" placeholder="e.g. 3" />
+
+    <label>Section</label>
+    <input type="text" [(ngModel)]="section" placeholder="e.g. A" />
+
+    <button (click)="createClass()">Create Class</button>
+
+    <hr />
+
+    <h3>Create Subject for a Class</h3>
+
+    <label>Select Class</label>
+    <select [(ngModel)]="selectedClassId" (change)="onClassChange()">
+      <option value="">Select Class</option>
+      <option *ngFor="let c of classes" [value]="c._id">
+        {{ c.department }} - {{ c.year }} - {{ c.section }}
+      </option>
+    </select>
+
+    <label>Subject Name</label>
+    <input type="text" [(ngModel)]="subjectName" placeholder="e.g. DBMS" />
+
+    <label>Subject Code</label>
+    <input type="text" [(ngModel)]="subjectCode" placeholder="e.g. CS2201" />
+
+    <label>Faculty ID</label>
+    <input type="text" [(ngModel)]="facultyId" placeholder="Enter faculty user id" />
+
+    <button (click)="createSubject()">Create Subject</button>
+
+    <hr />
+
+    <h3>Create Daily Schedule</h3>
+
+    <label>Select Class</label>
+    <select [(ngModel)]="selectedClassId" (change)="onClassChange()">
+      <option value="">Select Class</option>
+      <option *ngFor="let c of classes" [value]="c._id">
+        {{ c.department }} - {{ c.year }} - {{ c.section }}
+      </option>
+    </select>
+
+    <label>Date</label>
+    <input type="date" [(ngModel)]="date" />
+
+    <div *ngFor="let period of periods; let i = index" class="card">
+      <h4>Period {{ i + 1 }}</h4>
+
+      <label>Status</label>
+      <select [(ngModel)]="period.status">
+        <option value="scheduled">Scheduled</option>
+        <option value="free">Free</option>
+      </select>
+
+      <div *ngIf="period.status === 'scheduled'">
+        <label>Subject</label>
+        <select [(ngModel)]="period.subjectId">
+          <option value="">Select Subject</option>
+          <option *ngFor="let s of subjects" [value]="s._id">
+            {{ s.name }} ({{ s.subjectCode }})
+          </option>
+        </select>
+
+        <label>Faculty ID</label>
+        <input type="text" [(ngModel)]="period.facultyId" placeholder="Enter Faculty ID" />
+      </div>
+    </div>
+
+    <button (click)="submitSchedule()">Submit Schedule</button>
+
+    <hr />
+
+    <button (click)="logout()">Logout</button>
+  </div>
+</div>

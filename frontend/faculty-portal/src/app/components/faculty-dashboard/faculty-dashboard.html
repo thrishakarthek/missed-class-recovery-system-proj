@@ -1,0 +1,79 @@
+<div class="dashboard-page">
+  <div class="dashboard-container" *ngIf="user">
+    <h2>Faculty Dashboard</h2>
+
+    <div class="info-card">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Role:</strong> {{ user.role }}</p>
+      <p><strong>Access:</strong> Multiple classes through assigned subjects</p>
+    </div>
+
+    <hr />
+
+    <label>Select Class</label>
+    <select [(ngModel)]="selectedClassId" (change)="onClassChange()">
+      <option value="">Select Class</option>
+      <option *ngFor="let c of classes" [value]="c._id">
+        {{ c.department }} - {{ c.year }} - {{ c.section }}
+      </option>
+    </select>
+
+    <label>Select Subject</label>
+    <select [(ngModel)]="selectedSubjectId">
+      <option value="">Select Subject</option>
+      <option *ngFor="let s of subjects" [value]="s._id">
+        {{ s.name }} ({{ s.subjectCode }})
+      </option>
+    </select>
+
+    <hr />
+
+    <h3>Create Session</h3>
+
+    <label>Date</label>
+    <input type="date" [(ngModel)]="date" />
+
+    <label>Period Number</label>
+    <input type="number" [(ngModel)]="periodNumber" min="1" max="8" />
+
+    <label>Summary</label>
+    <textarea [(ngModel)]="summary"></textarea>
+
+    <label>Topics Covered (comma separated)</label>
+    <input type="text" [(ngModel)]="topicsInput" />
+
+    <button (click)="submitSession()">Submit Session</button>
+
+    <hr />
+
+    <h3>Upload Faculty Session Note</h3>
+
+    <label>Session ID</label>
+    <input type="text" [(ngModel)]="noteSessionId" />
+
+    <label>Note Title</label>
+    <input type="text" [(ngModel)]="noteTitle" />
+
+    <label>Choose File</label>
+    <input type="file" (change)="onSessionFileSelected($event)" />
+
+    <button (click)="uploadFacultyNote()">Upload Faculty Note</button>
+
+    <hr />
+
+    <h3>Upload General Subject Note</h3>
+
+    <label>Note Title</label>
+    <input type="text" [(ngModel)]="generalTitle" />
+
+    <label>Choose File</label>
+    <input type="file" (change)="onGeneralFileSelected($event)" />
+
+    <button (click)="uploadGeneralNote()">Upload General Note</button>
+
+    <hr />
+
+    <button (click)="logout()">Logout</button>
+  </div>
+</div>
