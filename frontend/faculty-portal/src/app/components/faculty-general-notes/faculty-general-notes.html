@@ -1,0 +1,32 @@
+<div class="dashboard-page">
+  <div class="dashboard-container">
+    <div class="top-row">
+      <h2>Upload General Notes</h2>
+      <button (click)="goBack()">Back</button>
+    </div>
+
+    <label>Select Class</label>
+    <select [(ngModel)]="selectedClassId" (change)="onClassChange()">
+      <option value="">Select Class</option>
+      <option *ngFor="let c of classes" [value]="c._id">
+        {{ c.department }} - {{ c.year }} - {{ c.section }}
+      </option>
+    </select>
+
+    <label>Select Subject</label>
+    <select [(ngModel)]="selectedSubjectId">
+      <option value="">Select Subject</option>
+      <option *ngFor="let s of subjects" [value]="s._id">
+        {{ s.name }} ({{ s.subjectCode }})
+      </option>
+    </select>
+
+    <label>Note Title</label>
+    <input type="text" [(ngModel)]="generalTitle" />
+
+    <label>Choose File</label>
+    <input type="file" (change)="onGeneralFileSelected($event)" />
+
+    <button (click)="uploadGeneralNote()">Upload General Note</button>
+  </div>
+</div>

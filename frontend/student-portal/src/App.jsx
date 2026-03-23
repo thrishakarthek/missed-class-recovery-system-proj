@@ -8,7 +8,9 @@ function App() {
   const [token, setToken] = useState("");
 
   const [name, setName] = useState("");
-  const [className, setClassName] = useState("");
+  const [department, setDepartment] = useState("");
+  const [year, setYear] = useState("");
+  const [section, setSection] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -116,12 +118,12 @@ function App() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          name,
-          email,
-          password,
-          role: "student",
-          className
-        })
+        name,
+        email,
+        password,
+        role: "student",
+        className: `${department}-${year}-${section}`
+      })
       });
 
       const data = await res.json();
@@ -134,7 +136,9 @@ function App() {
       setMessage("Signup successful! You can login now");
       setIsLogin(true);
       setName("");
-      setClassName("");
+      setDepartment("");
+      setYear("");
+      setSection("");
       setEmail("");
       setPassword("");
     } catch (err) {
@@ -354,12 +358,28 @@ function App() {
               onChange={(e) => setName(e.target.value)}
             />
 
-            <label>Class Name</label>
+            <label>Department / Branch</label>
             <input
               type="text"
-              placeholder="e.g. CSE-A"
-              value={className}
-              onChange={(e) => setClassName(e.target.value)}
+              placeholder="e.g. CSE"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+            />
+
+            <label>Year</label>
+            <input
+              type="number"
+              placeholder="e.g. 3"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            />
+
+            <label>Section</label>
+            <input
+              type="text"
+              placeholder="e.g. A"
+              value={section}
+              onChange={(e) => setSection(e.target.value)}
             />
           </>
         )}

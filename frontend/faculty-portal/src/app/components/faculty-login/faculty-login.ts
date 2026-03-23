@@ -42,7 +42,7 @@ export class FacultyLogin {
         }
 
         this.authService.saveAuthData(response.token, response.user);
-        this.router.navigate(['/faculty-dashboard']);
+        this.router.navigate(['/faculty-home']);
       },
       error: (error) => {
         this.errorMessage =

@@ -29,14 +29,16 @@ export class CrDashboard implements OnInit {
   subjectCode = '';
   facultyId = '';
 
+  facultyUsers: any[] = [];
+  selectedFacultyId = '';
+
   // schedule
   date = '';
   periods = Array.from({ length: 8 }, (_, i) => ({
-    periodNumber: i + 1,
-    status: 'scheduled',
-    subjectId: '',
-    facultyId: ''
-  }));
+  periodNumber: i + 1,
+  status: 'scheduled',
+  subjectId: ''
+}));
 
   subjects: any[] = [];
 
@@ -51,6 +53,7 @@ export class CrDashboard implements OnInit {
 
   ngOnInit(): void {
     this.fetchClasses();
+    this.fetchFacultyUsers();
   }
 
   fetchClasses(): void {
@@ -121,7 +124,7 @@ export class CrDashboard implements OnInit {
   }
 
   createSubject(): void {
-    if (!this.subjectName || !this.subjectCode || !this.selectedClassId || !this.facultyId) {
+    if (!this.subjectName || !this.subjectCode || !this.selectedClassId || !this.selectedFacultyId) {
       alert('All subject fields are required');
       return;
     }
@@ -132,7 +135,7 @@ export class CrDashboard implements OnInit {
         name: this.subjectName,
         subjectCode: this.subjectCode,
         classId: this.selectedClassId,
-        facultyId: this.facultyId
+        facultyId: this.selectedFacultyId
       },
       {
         headers: {
@@ -145,6 +148,7 @@ export class CrDashboard implements OnInit {
         this.subjectName = '';
         this.subjectCode = '';
         this.facultyId = '';
+        this.selectedFacultyId='';
         this.onClassChange();
       },
       error: (err) => {
@@ -167,11 +171,15 @@ export class CrDashboard implements OnInit {
         };
       }
 
+      const selectedSubject = this.subjects.find(
+        (s) => s._id === period.subjectId
+      );
+
       return {
         periodNumber: period.periodNumber,
         status: period.status,
         subjectId: period.subjectId,
-        facultyId: period.facultyId
+        facultyId: selectedSubject?.facultyId?._id || selectedSubject?.facultyId || ''
       };
     });
 
@@ -193,6 +201,21 @@ export class CrDashboard implements OnInit {
       },
       error: (err) => {
         alert(err?.error?.message || 'Error submitting schedule');
+      }
+    });
+  }
+
+  fetchFacultyUsers(): void {
+    this.http.get<any>('http://localhost:5000/api/auth/faculty-users', {
+      headers: {
+        Authorization: `Bearer ${this.token}`
+      }
+    }).subscribe({
+      next: (res) => {
+        this.facultyUsers = res.facultyUsers || [];
+      },
+      error: () => {
+        alert('Error fetching faculty users');
       }
     });
   }

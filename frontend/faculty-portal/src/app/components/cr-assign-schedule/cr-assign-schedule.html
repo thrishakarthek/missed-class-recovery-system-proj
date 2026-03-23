@@ -1,0 +1,41 @@
+<div class="dashboard-page">
+  <div class="dashboard-container">
+    <div class="top-row">
+      <h2>Assign Schedule</h2>
+      <button (click)="goBack()">Back</button>
+    </div>
+
+    <label>Select Class</label>
+    <select [(ngModel)]="selectedClassId" (change)="onClassChange()">
+      <option value="">Select Class</option>
+      <option *ngFor="let c of classes" [value]="c._id">
+        {{ c.department }} - {{ c.year }} - {{ c.section }}
+      </option>
+    </select>
+
+    <label>Date</label>
+    <input type="date" [(ngModel)]="date" />
+
+    <div *ngFor="let period of periods; let i = index" class="card">
+      <h3>Period {{ i + 1 }}</h3>
+
+      <label>Status</label>
+      <select [(ngModel)]="period.status">
+        <option value="scheduled">Scheduled</option>
+        <option value="free">Free</option>
+      </select>
+
+      <div *ngIf="period.status === 'scheduled'">
+        <label>Subject</label>
+        <select [(ngModel)]="period.subjectId">
+          <option value="">Select Subject</option>
+          <option *ngFor="let s of subjects" [value]="s._id">
+            {{ s.name }} ({{ s.subjectCode }})
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <button (click)="submitSchedule()">Submit Schedule</button>
+  </div>
+</div>

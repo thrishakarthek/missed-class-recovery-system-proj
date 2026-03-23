@@ -1,0 +1,31 @@
+<div class="home-container">
+  <div class="top-bar">
+    <div>
+      <h1>CR Portal</h1>
+      <p><strong>Name:</strong> {{ user?.name }}</p>
+    </div>
+    <button (click)="logout()">Logout</button>
+  </div>
+
+  <p class="subtitle">Choose an option</p>
+
+  <div class="portal-grid">
+    <div class="portal-card">
+      <h2>Create Class</h2>
+      <p>Create a new class with department, year, and section.</p>
+      <a routerLink="/cr-create-class" class="portal-btn">Open</a>
+    </div>
+
+    <div class="portal-card">
+      <h2>Create Subject</h2>
+      <p>Create subjects for a class and assign them to faculty.</p>
+      <a routerLink="/cr-create-subject" class="portal-btn">Open</a>
+    </div>
+
+    <div class="portal-card">
+      <h2>Assign Schedule</h2>
+      <p>Create or update the 8-period daily timetable.</p>
+      <a routerLink="/cr-assign-schedule" class="portal-btn">Open</a>
+    </div>
+  </div>
+</div>

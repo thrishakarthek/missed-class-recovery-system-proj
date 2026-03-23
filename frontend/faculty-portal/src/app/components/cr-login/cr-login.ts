@@ -42,7 +42,7 @@ export class CrLogin {
         }
 
         this.authService.saveAuthData(response.token, response.user);
-        this.router.navigate(['/cr-dashboard']);
+        this.router.navigate(['/cr-home']);
       },
       error: (error) => {
         this.errorMessage =

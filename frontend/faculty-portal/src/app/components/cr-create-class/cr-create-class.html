@@ -1,0 +1,19 @@
+<div class="dashboard-page">
+  <div class="dashboard-container">
+    <div class="top-row">
+      <h2>Create Class</h2>
+      <button (click)="goBack()">Back</button>
+    </div>
+
+    <label>Department</label>
+    <input type="text" [(ngModel)]="department" placeholder="e.g. CSE" />
+
+    <label>Year</label>
+    <input type="number" [(ngModel)]="year" placeholder="e.g. 3" />
+
+    <label>Section</label>
+    <input type="text" [(ngModel)]="section" placeholder="e.g. A" />
+
+    <button (click)="createClass()">Create Class</button>
+  </div>
+</div>

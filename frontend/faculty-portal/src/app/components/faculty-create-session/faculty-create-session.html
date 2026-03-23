@@ -1,0 +1,50 @@
+<div class="dashboard-page">
+  <div class="dashboard-container">
+    <div class="top-row">
+      <h2>Create Session</h2>
+      <button (click)="goBack()">Back</button>
+    </div>
+
+    <label>Select Class</label>
+    <select [(ngModel)]="selectedClassId" (change)="onClassChange()">
+      <option value="">Select Class</option>
+      <option *ngFor="let c of classes" [value]="c._id">
+        {{ c.department }} - {{ c.year }} - {{ c.section }}
+      </option>
+    </select>
+
+    <label>Select Subject</label>
+    <select [(ngModel)]="selectedSubjectId">
+      <option value="">Select Subject</option>
+      <option *ngFor="let s of subjects" [value]="s._id">
+        {{ s.name }} ({{ s.subjectCode }})
+      </option>
+    </select>
+
+    <label>Date</label>
+    <input type="date" [(ngModel)]="date" />
+
+    <label>Period Number</label>
+    <input type="number" [(ngModel)]="periodNumber" min="1" max="8" />
+
+    <label>Summary</label>
+    <textarea [(ngModel)]="summary"></textarea>
+
+    <label>Topics Covered (comma separated)</label>
+    <input type="text" [(ngModel)]="topicsInput" />
+
+    <button (click)="submitSession()">Submit Session</button>
+
+    <hr />
+
+    <h3>Optional: Upload Session Note</h3>
+
+    <label>Note Title</label>
+    <input type="text" [(ngModel)]="noteTitle" />
+
+    <label>Choose File</label>
+    <input type="file" (change)="onFileSelected($event)" />
+
+
+  </div>
+</div>

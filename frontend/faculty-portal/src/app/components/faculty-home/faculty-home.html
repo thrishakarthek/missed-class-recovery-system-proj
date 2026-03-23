@@ -1,0 +1,26 @@
+<div class="home-container">
+  <div class="top-bar">
+    <div>
+      <h1>Faculty Portal</h1>
+      <p><strong>Name:</strong> {{ user?.name }}</p>
+      <p><strong>Email:</strong> {{ user?.email }}</p>
+    </div>
+    <button (click)="logout()">Logout</button>
+  </div>
+
+  <p class="subtitle">Choose an option</p>
+
+  <div class="portal-grid">
+    <div class="portal-card">
+      <h2>Create Session</h2>
+      <p>Create a session for a class and upload session-specific notes.</p>
+      <a routerLink="/faculty-create-session" class="portal-btn">Open</a>
+    </div>
+
+    <div class="portal-card">
+      <h2>Upload General Notes</h2>
+      <p>Upload subject-level reusable notes such as PPTs and reference materials.</p>
+      <a routerLink="/faculty-general-notes" class="portal-btn">Open</a>
+    </div>
+  </div>
+</div>

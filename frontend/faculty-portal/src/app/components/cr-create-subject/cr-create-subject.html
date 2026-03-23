@@ -1,0 +1,32 @@
+<div class="dashboard-page">
+  <div class="dashboard-container">
+    <div class="top-row">
+      <h2>Create Subject</h2>
+      <button (click)="goBack()">Back</button>
+    </div>
+
+    <label>Select Class</label>
+    <select [(ngModel)]="selectedClassId">
+      <option value="">Select Class</option>
+      <option *ngFor="let c of classes" [value]="c._id">
+        {{ c.department }} - {{ c.year }} - {{ c.section }}
+      </option>
+    </select>
+
+    <label>Subject Name</label>
+    <input type="text" [(ngModel)]="subjectName" placeholder="e.g. DBMS" />
+
+    <label>Subject Code</label>
+    <input type="text" [(ngModel)]="subjectCode" placeholder="e.g. CS2201" />
+
+    <label>Select Faculty</label>
+    <select [(ngModel)]="selectedFacultyId">
+      <option value="">Select Faculty</option>
+      <option *ngFor="let faculty of facultyUsers" [value]="faculty._id">
+        {{ faculty.name }} - {{ faculty.email }}
+      </option>
+    </select>
+
+    <button (click)="createSubject()">Create Subject</button>
+  </div>
+</div>

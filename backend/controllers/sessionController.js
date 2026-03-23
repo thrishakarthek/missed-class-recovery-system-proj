@@ -11,7 +11,7 @@ exports.createSession = async (req, res) => {
       periodNumber,
       summary,
       topicsCovered,
-      notesUrl
+      noteTitle
     } = req.body;
 
     if (!classId || !subjectId || !date || !periodNumber || !summary) {
@@ -31,7 +31,7 @@ exports.createSession = async (req, res) => {
 
     // Check if that period is scheduled
     const period = schedule.periods.find(
-      (p) => p.periodNumber === periodNumber
+      (p) => p.periodNumber === Number(periodNumber)
     );
 
     if (!period || period.status !== "scheduled") {
@@ -53,6 +53,11 @@ exports.createSession = async (req, res) => {
       });
     }
 
+    const parsedTopics =
+      typeof topicsCovered === "string"
+        ? JSON.parse(topicsCovered)
+        : topicsCovered || [];
+
     const session = await Session.create({
       classId,
       subjectId,
@@ -60,10 +65,23 @@ exports.createSession = async (req, res) => {
       date,
       periodNumber,
       summary,
-      topicsCovered,
-      notesUrl,
+      topicsCovered: parsedTopics,
       uploadedBy: req.user.id
     });
+
+    // Optional faculty session note upload during session creation
+    if (req.file && noteTitle) {
+      const fileUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+
+      session.sessionNotes.push({
+        title: noteTitle,
+        fileUrl,
+        uploadedBy: req.user.id,
+        noteType: "faculty"
+      });
+
+      await session.save();
+    }
 
     res.status(201).json({
       message: "Session created successfully",

@@ -40,8 +40,13 @@
     <label>Subject Code</label>
     <input type="text" [(ngModel)]="subjectCode" placeholder="e.g. CS2201" />
 
-    <label>Faculty ID</label>
-    <input type="text" [(ngModel)]="facultyId" placeholder="Enter faculty user id" />
+    <label>Select Faculty</label>
+    <select [(ngModel)]="selectedFacultyId">
+      <option value="">Select Faculty</option>
+      <option *ngFor="let faculty of facultyUsers" [value]="faculty._id">
+        {{ faculty.name }} ({{ faculty._id.slice(-5) }})
+      </option>
+    </select>
 
     <button (click)="createSubject()">Create Subject</button>
 
@@ -70,17 +75,14 @@
       </select>
 
       <div *ngIf="period.status === 'scheduled'">
-        <label>Subject</label>
-        <select [(ngModel)]="period.subjectId">
-          <option value="">Select Subject</option>
-          <option *ngFor="let s of subjects" [value]="s._id">
-            {{ s.name }} ({{ s.subjectCode }})
-          </option>
-        </select>
-
-        <label>Faculty ID</label>
-        <input type="text" [(ngModel)]="period.facultyId" placeholder="Enter Faculty ID" />
-      </div>
+      <label>Subject</label>
+      <select [(ngModel)]="period.subjectId">
+        <option value="">Select Subject</option>
+        <option *ngFor="let s of subjects" [value]="s._id">
+          {{ s.name }} ({{ s.subjectCode }})
+        </option>
+      </select>
+    </div>
     </div>
 
     <button (click)="submitSchedule()">Submit Schedule</button>

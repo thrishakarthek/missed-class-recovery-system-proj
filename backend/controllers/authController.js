@@ -123,3 +123,19 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.getFacultyUsers = async (req, res) => {
+  try {
+    const facultyUsers = await User.find({ role: "faculty" }).select("name email");
+
+    res.status(200).json({
+      message: "Faculty users fetched successfully",
+      facultyUsers
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching faculty users",
+      error: error.message
+    });
+  }
+};
