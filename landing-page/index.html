@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EduSync Portal</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .box {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      background: #38bdf8;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>EduSync</h1>
+  <p>Select your portal</p>
+
+  <div class="box">
+    <div class="card" onclick="goStudent()">Student Portal</div>
+    <div class="card" onclick="goFaculty()">Faculty Portal</div>
+  </div>
+
+  <script>
+    function goStudent() {
+      window.location.href = "https://missed-class-recovery-system-proj.vercel.app/";
+    }
+
+    function goFaculty() {
+      window.location.href = "https://missed-class-recovery-system-proj-a.vercel.app/";
+    }
+  </script>
+
+</body>
+</html>
