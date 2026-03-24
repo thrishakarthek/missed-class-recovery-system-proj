@@ -211,3 +211,27 @@ button:hover {
     width: calc(100% - 40px);
   }
 }
+/* GLOBAL DROPDOWN STYLE */
+select {
+  background-color: #0f172a; /* dark bg */
+  color: #e2e8f0; /* text */
+  border: 1px solid #334155;
+  padding: 8px;
+  border-radius: 6px;
+  outline: none;
+  appearance: none; /* removes default styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Dropdown options */
+select option {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Focus */
+select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px #38bdf8;
+}
