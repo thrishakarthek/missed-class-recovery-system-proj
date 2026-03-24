@@ -40,41 +40,42 @@ function App() {
   const today = new Date().toISOString().split("T")[0];
 
   const fetchClasses = async (authToken, loggedInUser) => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/classes`, {
-        headers: {
-          Authorization: `Bearer ${authToken}`
-        }
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setMessage(data.message || "Failed to fetch classes");
-        return;
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/classes`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
       }
+    });
 
-      if (loggedInUser?.className) {
-        const matchedClass = classList.find(
-          (c) => `${c.department}-${c.year}-${c.section}` === loggedInUser.className
-        );
+    const data = await res.json();
 
-        if (matchedClass) {
-          setClassId(matchedClass._id);
-        } else {
-          setMessage("Class not found in database");
-          console.log("User className:", loggedInUser.className);
-        console.log(
-          "Available classes:",
-          classList.map(c => `${c.department}-${c.year}-${c.section}`)
-        );
-        }
-      }
-    } catch (err) {
-      console.log(err);
-      setMessage("Error fetching classes");
+    if (!res.ok) {
+      setMessage(data.message || "Failed to fetch classes");
+      return;
     }
-  };
+
+    const classList = data.classes || [];
+    setClasses(classList);
+
+    // ✅ THIS PART MUST BE INSIDE HERE
+    if (loggedInUser?.className) {
+      const matchedClass = classList.find(
+        (c) =>
+          `${c.department}-${c.year}-${c.section}`.trim().toUpperCase() ===
+          loggedInUser.className.trim().toUpperCase()
+      );
+
+      if (matchedClass) {
+        setClassId(matchedClass._id);
+      } else {
+        setMessage("Class not found in database");
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    setMessage("Error fetching classes");
+  }
+};
 
   useEffect(() => {
     if (token && user) {
