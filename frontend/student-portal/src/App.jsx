@@ -54,16 +54,20 @@ function App() {
         return;
       }
 
-      const classList = data.classes || [];
-      setClasses(classList);
-
       if (loggedInUser?.className) {
         const matchedClass = classList.find(
-          (c) => `${c.department}-${c.section}` === loggedInUser.className
+          (c) => `${c.department}-${c.year}-${c.section}` === loggedInUser.className
         );
 
         if (matchedClass) {
           setClassId(matchedClass._id);
+        } else {
+          setMessage("Class not found in database");
+          console.log("User className:", loggedInUser.className);
+        console.log(
+          "Available classes:",
+          classList.map(c => `${c.department}-${c.year}-${c.section}`)
+        );
         }
       }
     } catch (err) {

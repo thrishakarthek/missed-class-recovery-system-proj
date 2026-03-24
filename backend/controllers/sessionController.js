@@ -71,7 +71,7 @@ exports.createSession = async (req, res) => {
 
     // Optional faculty session note upload during session creation
     if (req.file && noteTitle) {
-      const fileUrl = `${process.envBASE_URL}/uploads/${req.file.filename}`;
+      const fileUrl = `${process.env.BASE_URL}/uploads/${req.file.filename}`;
 
       session.sessionNotes.push({
         title: noteTitle,
@@ -136,7 +136,7 @@ exports.uploadFacultySessionNote = async (req, res) => {
       });
     }
 
-    const fileUrl = `${process.envBASE_URL}/uploads/${req.file.filename}`;
+    const fileUrl = `${process.env.BASE_URL}/uploads/${req.file.filename}`;
 
     session.sessionNotes.push({
       title,
@@ -178,7 +178,7 @@ exports.uploadPeerNote = async (req, res) => {
       });
     }
 
-    const fileUrl = `${process.envBASE_URL}/uploads/${req.file.filename}`;
+    const fileUrl = `${process.env.BASE_URL}/uploads/${req.file.filename}`;
 
     session.sessionNotes.push({
       title,

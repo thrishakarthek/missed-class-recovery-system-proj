@@ -18,13 +18,13 @@ exports.getMissedSessions = async (req, res) => {
     })
       .populate("subjectId", "name subjectCode")
       .populate("facultyId", "name email")
+      .populate("sessionNotes.uploadedBy", "name")
       .sort({ date: 1, periodNumber: 1 });
-
-    res.status(200).json({
-      message: "Missed sessions fetched successfully",
-      totalSessions: sessions.length,
-      sessions
-    });
+        res.status(200).json({
+          message: "Missed sessions fetched successfully",
+          totalSessions: sessions.length,
+          sessions
+  });
   } catch (error) {
     res.status(500).json({
       message: "Error fetching missed sessions",
