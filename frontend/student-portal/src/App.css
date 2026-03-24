@@ -294,3 +294,16 @@ button {
   font-weight: 700;
   transition: all .2s;
 }
+.header-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* 👈 this fixes overlap */
+}
+
+.header-box h1 {
+  margin: 0;
+}
+
+.header-box p {
+  margin: 0;
+}

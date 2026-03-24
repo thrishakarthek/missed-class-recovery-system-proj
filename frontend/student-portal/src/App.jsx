@@ -430,7 +430,7 @@ function App() {
     return (
       <div className="home-container">
         <div className="top-bar">
-          <div>
+          <div className="header-box">
             <h1>Welcome {user.name}</h1>
             <p><strong>Class:</strong> {user.className}</p>
           </div>
