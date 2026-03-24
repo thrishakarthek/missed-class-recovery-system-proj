@@ -475,7 +475,6 @@ function App() {
       <div className="container">
         <div className="top-bar">
           <h1>Today’s Timetable</h1>
-          <br></br><br></br>
           <button onClick={() => setCurrentPage("home")}>Back</button>
         </div>
 

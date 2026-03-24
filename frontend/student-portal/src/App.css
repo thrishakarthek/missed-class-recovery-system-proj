@@ -5,6 +5,20 @@ body {
   color: #e2e8f0;
 }
 
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar h1 {
+  margin: 0;
+}
+
+.top-bar button {
+  margin-left: auto;
+}
+
 .home-container {
   min-height: 100vh;
   background: #0f172a;
