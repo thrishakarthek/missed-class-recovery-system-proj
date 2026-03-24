@@ -431,7 +431,7 @@ function App() {
       <div className="home-container">
         <div className="top-bar">
           <div className="header-box">
-            <h1>Welcome {user.name}</h1>
+            <h2>Welcome {user.name}</h2>
             <p><strong>Class:</strong> {user.className}</p>
           </div>
           <button onClick={handleLogout}>Logout</button>

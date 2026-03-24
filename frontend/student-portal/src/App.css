@@ -300,7 +300,7 @@ button {
   gap: 8px; /* 👈 this fixes overlap */
 }
 
-.header-box h1 {
+.header-box h2 {
   margin: 0;
 }
 
